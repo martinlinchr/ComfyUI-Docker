@@ -17,5 +17,7 @@ services:
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
+      - "traefik.http.routers.comfyui.entrypoints=web,websecure"
       - "traefik.http.routers.comfyui.rule=Host(`comfyui.martin-linde.com`)"
       - "traefik.http.services.comfyui.loadbalancer.server.port=8188"
+      - "traefik.http.routers.comfyui.tls.certresolver=letsencrypt"
